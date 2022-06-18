@@ -1,0 +1,25 @@
+html {
+    font-size: 100px;
+}
+
+body {
+    font-size: .16rem;
+}
+
+::-webkit-scrollbar {
+    width: 0rem;
+    height: 0rem;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    height: .3rem;
+    background-color: #adadad;
+    border-radius: .05rem;
+}
+
+:hover::-webkit-scrollbar {
+    width: .1rem;
+    height: .1rem;
+}
