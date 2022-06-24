@@ -71,12 +71,9 @@ var normalize =__etcpack__scope_args__.default;
 
 __etcpack__scope_args__=window.__etcpack__getBundle('4');
 var style =__etcpack__scope_args__.default;
-
-__etcpack__scope_args__=window.__etcpack__getBundle('5');
-var mac =__etcpack__scope_args__.default;
  // 引入主模块
 
-__etcpack__scope_args__=window.__etcpack__getBundle('6');
+__etcpack__scope_args__=window.__etcpack__getBundle('5');
 var appModule =__etcpack__scope_args__.default;
  // 先获取平台实例
 
@@ -84,7 +81,7 @@ platform({
   // 框架管理的区域
   el: document.getElementById('root'),
   // 全局样式
-  styles: [normalize, style, mac]
+  styles: [normalize, style]
 }) // 然后启动主模块
 .bootstrap(appModule);
   
@@ -1933,20 +1930,9 @@ window.__etcpack__bundleSrc__['4']=function(){
 }
 
 /*************************** [bundle] ****************************/
-// Original file:null
-/*****************************************************************/
-window.__etcpack__bundleSrc__['5']=function(){
-    var __etcpack__scope_bundle__={};
-    var __etcpack__scope_args__;
-    null
-  
-    return __etcpack__scope_bundle__;
-}
-
-/*************************** [bundle] ****************************/
 // Original file:./src/app.module.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['6']=function(){
+window.__etcpack__bundleSrc__['5']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -1961,17 +1947,17 @@ __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Module=__etcpack__scope_args__.Module;
  // 组件
 
-__etcpack__scope_args__=window.__etcpack__getBundle('7');
+__etcpack__scope_args__=window.__etcpack__getBundle('6');
 var AppComponent =__etcpack__scope_args__.default;
  // 指令
 
-__etcpack__scope_args__=window.__etcpack__getBundle('10');
+__etcpack__scope_args__=window.__etcpack__getBundle('9');
 var uiBind =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('21');
+__etcpack__scope_args__=window.__etcpack__getBundle('20');
 var uiModel =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('23');
+__etcpack__scope_args__=window.__etcpack__getBundle('22');
 var uiOn =__etcpack__scope_args__.default;
 
 
@@ -1992,33 +1978,49 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['7']=function(){
+window.__etcpack__bundleSrc__['6']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Component=__etcpack__scope_args__.Component;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('8');
+__etcpack__scope_args__=window.__etcpack__getBundle('7');
 var style =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('9');
+__etcpack__scope_args__=window.__etcpack__getBundle('8');
 var template =__etcpack__scope_args__.default;
 
 
 var _class = (_dec = Component({
   template: template,
   styles: [style]
-}), _dec(_class2 = /*#__PURE__*/_createClass(function _class2() {
-  _classCallCheck(this, _class2);
-})) || _class2);
+}), _dec(_class2 = /*#__PURE__*/function () {
+  function _class2() {
+    _classCallCheck(this, _class2);
+  }
+
+  _createClass(_class2, [{
+    key: "quit",
+    value: function quit() {
+      globalThis.nodeRequire('electron').ipcRenderer.send('quit');
+    }
+  }, {
+    key: "minimize",
+    value: function minimize() {
+      globalThis.nodeRequire('electron').ipcRenderer.send('minimize');
+    }
+  }]);
+
+  return _class2;
+}()) || _class2);
 
 __etcpack__scope_bundle__.default=_class;
   
@@ -2028,10 +2030,10 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.scss
 /*****************************************************************/
-window.__etcpack__bundleSrc__['8']=function(){
+window.__etcpack__bundleSrc__['7']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= ""
+    __etcpack__scope_bundle__.default= "\n .view>header{\n\nposition: relative;\n\n}\n\n .view>header>h2{\n\nfont-size: 14px;\n\nline-height: 30px;\n\nbackground-color: rgb(221, 237, 249);\n\nbackground-image: url('./image/logo.png');\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 10px center;\n\npadding-left: 40px;\n\nfont-weight: 200;\n\nfont-family: cursive;\n\n}\n\n .view>header>.btn{\n\nposition: absolute;\n\nwidth: 20px;\n\nheight: 20px;\n\nbackground-position: center center;\n\ntop: 0;\n\nfont-size: 0;\n\nbackground-repeat: no-repeat;\n\ncursor: pointer;\n\n}\n\n .view>header>.btn:hover{\n\nbackground-color: rgb(202, 226, 245);\n\n}\n\n .view>header>.btn.min{\n\nbackground-image: url('./image/min.png');\n\nright: 40px;\n\n}\n\n .view>header>.btn.close{\n\nbackground-image: url('./image/close.png');\n\nright: 10px;\n\n}\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -2039,10 +2041,10 @@ window.__etcpack__bundleSrc__['8']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.html
 /*****************************************************************/
-window.__etcpack__bundleSrc__['9']=function(){
+window.__etcpack__bundleSrc__['8']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "<div class='view'>\r\n    \r\n</div>\r\n"
+    __etcpack__scope_bundle__.default= "<div class='view'>\n    <header>\n        <h2 style=\"-webkit-app-region: drag\">\n            来聊天吧~\n        </h2>\n        <span class=\"btn min\" style=\"-webkit-app-region: no-drag\" ui-on:click=\"minimize\">\n            最小化\n        </span>\n        <span class=\"btn close\" style=\"-webkit-app-region: no-drag\" ui-on:click='quit'>\n            关闭\n        </span>\n    </header>\n</div>\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -2050,7 +2052,7 @@ window.__etcpack__bundleSrc__['9']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-bind.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['10']=function(){
+window.__etcpack__bundleSrc__['9']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -2064,7 +2066,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('11');
+__etcpack__scope_args__=window.__etcpack__getBundle('10');
 var isString=__etcpack__scope_args__.isString;
 
 
@@ -2112,34 +2114,34 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/type.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['11']=function(){
+window.__etcpack__bundleSrc__['10']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('12');
+    __etcpack__scope_args__=window.__etcpack__getBundle('11');
 var _isObject =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('13');
+__etcpack__scope_args__=window.__etcpack__getBundle('12');
 var _isBoolean =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('15');
+__etcpack__scope_args__=window.__etcpack__getBundle('14');
 var _isNumber =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('16');
+__etcpack__scope_args__=window.__etcpack__getBundle('15');
 var _isString =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('17');
+__etcpack__scope_args__=window.__etcpack__getBundle('16');
 var _isSymbol =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('18');
+__etcpack__scope_args__=window.__etcpack__getBundle('17');
 var _isFunction =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('19');
+__etcpack__scope_args__=window.__etcpack__getBundle('18');
 var _isError =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('20');
+__etcpack__scope_args__=window.__etcpack__getBundle('19');
 var _isPlainObject =__etcpack__scope_args__.default;
 
 
@@ -2188,7 +2190,7 @@ __etcpack__scope_bundle__.isComment = function (input) { return domTypeHelp([8],
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isObject.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['12']=function(){
+window.__etcpack__bundleSrc__['11']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /**
@@ -2209,10 +2211,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isBoolean.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['13']=function(){
+window.__etcpack__bundleSrc__['12']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2234,7 +2236,7 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/getType.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['14']=function(){
+window.__etcpack__bundleSrc__['13']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var toString = Object.prototype.toString;
@@ -2259,10 +2261,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isNumber.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['15']=function(){
+window.__etcpack__bundleSrc__['14']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2286,10 +2288,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isString.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['16']=function(){
+window.__etcpack__bundleSrc__['15']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2311,10 +2313,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isSymbol.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['17']=function(){
+window.__etcpack__bundleSrc__['16']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2336,13 +2338,13 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isFunction.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['18']=function(){
+window.__etcpack__bundleSrc__['17']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('12');
+__etcpack__scope_args__=window.__etcpack__getBundle('11');
 var isObject =__etcpack__scope_args__.default;
 
 
@@ -2369,13 +2371,13 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isError.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['19']=function(){
+window.__etcpack__bundleSrc__['18']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('20');
+    __etcpack__scope_args__=window.__etcpack__getBundle('19');
 var isPlainObject =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('14');
+__etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2403,10 +2405,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isPlainObject.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['20']=function(){
+window.__etcpack__bundleSrc__['19']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('14');
+    __etcpack__scope_args__=window.__etcpack__getBundle('13');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2442,7 +2444,7 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-model.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['21']=function(){
+window.__etcpack__bundleSrc__['20']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -2457,7 +2459,7 @@ __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 var setValue=__etcpack__scope_args__.setValue;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('22');
+__etcpack__scope_args__=window.__etcpack__getBundle('21');
 var xhtml =__etcpack__scope_args__.default;
 
 
@@ -2494,7 +2496,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/browser/xhtml.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['22']=function(){
+window.__etcpack__bundleSrc__['21']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /*!
@@ -2809,7 +2811,7 @@ __etcpack__scope_bundle__.default= {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-on.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['23']=function(){
+window.__etcpack__bundleSrc__['22']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -2823,7 +2825,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('22');
+__etcpack__scope_args__=window.__etcpack__getBundle('21');
 var xhtml =__etcpack__scope_args__.default;
 
 /**

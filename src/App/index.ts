@@ -9,6 +9,12 @@ import template from './index.html'
 })
 export default class {
 
-    
+    quit() {
+        globalThis.nodeRequire('electron').ipcRenderer.send('quit')
+    }
+
+    minimize() {
+        globalThis.nodeRequire('electron').ipcRenderer.send('minimize')
+    }
 
 }

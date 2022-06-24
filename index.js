@@ -3,10 +3,10 @@ const { app, BrowserWindow } = require('electron');
 function createWindow() {
     // 创建浏览器窗口
     let win = new BrowserWindow({
-        width: 700,
-        height: 500,
-        resizable: true,
-        frame: true,
+        width: (process.env.NODE_ENV + "").trim() == 'development' ? 500 : 260,
+        height: 600,
+        resizable: false,
+        frame: false,
         webPreferences: {
             /**
              * 因为 Electron 在运行环境中引入了 Node.js，所以在 DOM 中有一些额外的变量，比如 module、exports 和 require
