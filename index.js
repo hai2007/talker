@@ -7,6 +7,7 @@ function createWindow() {
         height: 600,
         resizable: false,
         frame: false,
+        alwaysOnTop: true,
         webPreferences: {
             /**
              * 因为 Electron 在运行环境中引入了 Node.js，所以在 DOM 中有一些额外的变量，比如 module、exports 和 require

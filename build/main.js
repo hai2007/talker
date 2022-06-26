@@ -1989,8 +1989,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Component=__etcpack__scope_args__.Component;
+var ref=__etcpack__scope_args__.ref;
 
 __etcpack__scope_args__=window.__etcpack__getBundle('7');
 var style =__etcpack__scope_args__.default;
@@ -2005,9 +2008,18 @@ var _class = (_dec = Component({
 }), _dec(_class2 = /*#__PURE__*/function () {
   function _class2() {
     _classCallCheck(this, _class2);
+
+    _defineProperty(this, "ip", void 0);
   }
 
   _createClass(_class2, [{
+    key: "$setup",
+    value: function $setup() {
+      return {
+        ip: ref(['127.0.0.1'])
+      };
+    }
+  }, {
     key: "quit",
     value: function quit() {
       globalThis.nodeRequire('electron').ipcRenderer.send('quit');
@@ -2016,6 +2028,37 @@ var _class = (_dec = Component({
     key: "minimize",
     value: function minimize() {
       globalThis.nodeRequire('electron').ipcRenderer.send('minimize');
+    } // 发送信息
+    // target表示接收者的ip，如果是“255.255.255.255”，就是发送给所有的
+
+  }, {
+    key: "sendMsg",
+    value: function sendMsg() {
+      var msg = {
+        target: "255.255.255.255",
+        data: {}
+      };
+      globalThis.nodeRequire('electron').ipcRenderer.send('send-msg', JSON.stringify(msg));
+    }
+  }, {
+    key: "$mounted",
+    value: function $mounted() {
+      var WLAN = globalThis.nodeRequire('os').networkInterfaces().WLAN;
+      var ip = [];
+
+      for (var index = 0; index < WLAN.length; index++) {
+        if (WLAN[index].family == 'IPv4') {
+          // 虽然mac是唯一的，不过还是ip吧
+          ip.push(WLAN[index].address);
+        }
+      } // 启动事件监听主进程
+
+
+      globalThis.nodeRequire('electron').ipcRenderer // 监听别的软件发送来的信息
+      .on("get-msg", function (event, data) {
+        var msg = JSON.parse(data.msg);
+        console.log(data.ip, msg);
+      });
     }
   }]);
 
@@ -2033,7 +2076,7 @@ __etcpack__scope_bundle__.default=_class;
 window.__etcpack__bundleSrc__['7']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "\n .view>header{\n\nposition: relative;\n\n}\n\n .view>header>h2{\n\nfont-size: 14px;\n\nline-height: 30px;\n\nbackground-color: rgb(221, 237, 249);\n\nbackground-image: url('./image/logo.png');\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 10px center;\n\npadding-left: 40px;\n\nfont-weight: 200;\n\nfont-family: cursive;\n\n}\n\n .view>header>.btn{\n\nposition: absolute;\n\nwidth: 20px;\n\nheight: 20px;\n\nbackground-position: center center;\n\ntop: 0;\n\nfont-size: 0;\n\nbackground-repeat: no-repeat;\n\ncursor: pointer;\n\n}\n\n .view>header>.btn:hover{\n\nbackground-color: rgb(202, 226, 245);\n\n}\n\n .view>header>.btn.min{\n\nbackground-image: url('./image/min.png');\n\nright: 40px;\n\n}\n\n .view>header>.btn.close{\n\nbackground-image: url('./image/close.png');\n\nright: 10px;\n\n}\n"
+    __etcpack__scope_bundle__.default= "\n .view{\n\nbackground-color: rgb(221, 237, 249);\n\nbackground-image: linear-gradient(rgb(221, 237, 249), white);\n\nheight: 100vh;\n\n}\n\n .view>header{\n\nposition: relative;\n\n}\n\n .view>header>h2{\n\nfont-size: 14px;\n\nline-height: 30px;\n\nbackground-image: url('./image/logo.png');\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 10px center;\n\npadding-left: 40px;\n\nfont-weight: 200;\n\nfont-family: cursive;\n\n}\n\n .view>header>.btn{\n\nposition: absolute;\n\nwidth: 20px;\n\nheight: 20px;\n\nbackground-position: center center;\n\ntop: 0;\n\nfont-size: 0;\n\nbackground-repeat: no-repeat;\n\ncursor: pointer;\n\n}\n\n .view>header>.btn:hover{\n\nbackground-color: rgb(202, 226, 245);\n\n}\n\n .view>header>.btn.min{\n\nbackground-image: url('./image/min.png');\n\nright: 40px;\n\n}\n\n .view>header>.btn.close{\n\nbackground-image: url('./image/close.png');\n\nright: 10px;\n\n}\n\n .view>.msg{\n\npadding: 5px 10px;\n\n}\n\n .view>.msg>div{\n\ndisplay: inline-block;\n\nvertical-align: top;\n\n}\n\n .view>.msg>div.icon{\n\nwidth: 40px;\n\nheight: 40px;\n\nborder: 1px solid white;\n\nbackground-image: url('./image/icon.jpg');\n\nbackground-position: center center;\n\nbackground-size: auto 100%;\n\nborder-radius: 5px;\n\n}\n\n .view>.search>input{\n\nheight: 24px;\n\ndisplay: block;\n\nmargin: auto;\n\nwidth: calc(100vw - 10px);\n\nline-height: 12px;\n\nborder-radius: 5px;\n\noutline: none;\n\npadding: 0 5px;\n\nfont-size: 12px;\n\nborder: none;\n\nbackground-color: rgb(255, 255, 255);\n\nbox-shadow: inset 0 0 3px 0px #b9b7b7;\n\n}\n\n .view>.list{\n\nheight: calc(100vh - 186px);\n\nbackground-color: white;\n\nmargin: 5px;\n\nborder: 1px solid rgb(77, 173, 247);\n\n}\n\n .view>.tool{\n\nheight: 70px;\n\nbackground-image: linear-gradient(white, rgb(221, 237, 249));\n\n}\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -2044,7 +2087,7 @@ window.__etcpack__bundleSrc__['7']=function(){
 window.__etcpack__bundleSrc__['8']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "<div class='view'>\n    <header>\n        <h2 style=\"-webkit-app-region: drag\">\n            来聊天吧~\n        </h2>\n        <span class=\"btn min\" style=\"-webkit-app-region: no-drag\" ui-on:click=\"minimize\">\n            最小化\n        </span>\n        <span class=\"btn close\" style=\"-webkit-app-region: no-drag\" ui-on:click='quit'>\n            关闭\n        </span>\n    </header>\n</div>\n"
+    __etcpack__scope_bundle__.default= "<div class='view'>\n    <header>\n        <h2 style=\"-webkit-app-region: drag\">\n            来聊天吧~\n        </h2>\n        <span class=\"btn min\" style=\"-webkit-app-region: no-drag\" ui-on:click=\"minimize\">\n            最小化\n        </span>\n        <span class=\"btn close\" style=\"-webkit-app-region: no-drag\" ui-on:click='quit'>\n            关闭\n        </span>\n    </header>\n    <div class=\"msg\">\n        <div class=\"icon\"></div>\n        <div class=\"info\"></div>\n    </div>\n    <div class=\"search\">\n        <input type=\"text\" placeholder=\"搜索好友\">\n    </div>\n    <div class=\"list\">\n\n    </div>\n    <div class=\"tool\">\n\n    </div>\n</div>\n"
   
     return __etcpack__scope_bundle__;
 }

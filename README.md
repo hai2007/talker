@@ -1,3 +1,5 @@
+<img src='./view.png' />
+
 # Talker
 一个类似FeiQ的聊天工具，支持windows、mac等平台。
 
