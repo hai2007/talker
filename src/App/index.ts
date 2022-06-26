@@ -13,7 +13,7 @@ export default class {
 
     $setup() {
         return {
-            ip: ref(['192.0.0.1'])
+            ip: ref(['127.0.0.1'])
         }
     }
 
