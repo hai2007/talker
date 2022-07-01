@@ -1,0 +1,38 @@
+<div class="view">
+    <header>
+        <h2 style="-webkit-app-region: drag" ui-bind='"与 " + info.yourname + " 对话中（IP:" + info.yourip + "）"'></h2>
+        <span class="btn min" style="-webkit-app-region: no-drag" ui-on:click="minimize">
+            最小化
+        </span>
+        <span class="btn close" style="-webkit-app-region: no-drag" ui-on:click='quit'>
+            关闭
+        </span>
+    </header>
+    <div class="main">
+        <div class="left">
+            <div class="msg-win">
+                <div id="msg"></div>
+                <div class="help-input">
+                    <label class="image" for="sendImage">
+                        图片
+                    </label>
+                </div>
+                <textarea id="input" ui-model="content" ui-on:keydown="doKeydown"></textarea>
+            </div>
+            <div class="btns">
+                <button ui-on:click="doSend" id="send-btn">发送</button>
+            </div>
+        </div>
+        <div class="right">
+            <span class="history" ui-on:click="openHistory">聊天记录</span>
+        </div>
+    </div>
+</div>
+
+<!-- 帮助隐藏 -->
+<div class="not-show-view">
+
+    <!-- 选择图片发送 -->
+    <input type="file" id="sendImage" ui-on:change="sendImage" accept="image/*" />
+
+</div>

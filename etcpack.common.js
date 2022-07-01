@@ -18,7 +18,7 @@ module.exports = {
         test: /\.(css|scss)$/,
         handler: ['@etcpack/plain-loader', '@etcpack/scss-loader']
     }, {
-        test: /\.html$/,
+        test: /\index\.html$/,
         handler: ['@etcpack/plain-loader']
     }, {
         test: /\.(ts|js)$/,

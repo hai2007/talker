@@ -6,10 +6,6 @@
 ## Issues
 使用的时候遇到任何问题或有好的建议，请点击进入[issue](https://github.com/hai2007/talker/issues)，欢迎参与维护！
 
-## 写在这里
-
-> 研发中，敬请期待！
-
 开源协议
 ---------------------------------------
 [MIT](https://github.com/hai2007/talker/blob/master/LICENSE)

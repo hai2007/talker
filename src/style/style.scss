@@ -20,6 +20,126 @@ body {
 }
 
 :hover::-webkit-scrollbar {
-    width: .1rem;
-    height: .1rem;
+    width: 1px;
+    height: 1px;
+}
+
+// 好友列表
+#address-list {
+    &>div {
+        font-size: 14px;
+        line-height: 30px;
+        margin: 5px;
+        cursor: pointer;
+
+        &:hover {
+            outline: 1px solid rgb(228, 222, 222);
+        }
+
+        &>span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            vertical-align: top;
+            background-image: url('./image/logo.png');
+            background-position: center center;
+            background-size: 100% auto;
+        }
+
+        &>i {
+            font-size: 12px;
+            font-style: normal;
+            color: rgb(170, 157, 157);
+            font-weight: 200;
+        }
+    }
+}
+
+// 消息列表
+.item-talker {
+    &.left {
+        text-align: left;
+    }
+
+    &.right {
+        text-align: right;
+    }
+
+    &>span {
+        background-color: #0990bd;
+        padding: 0 10px;
+        line-height: 2em;
+        margin: 10px;
+        font-size: 12px;
+        color: white;
+        border-radius: 7px;
+        word-break: break-all;
+        max-width: 260px;
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+// 聊天记录
+#history-view {
+    font-size: 12px;
+    display: flex;
+    padding: 10px;
+    height: calc(100vh - 30px);
+
+    &>nav {
+        flex-basis: 200px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        overflow: auto;
+
+        &>span {
+            background-color: white;
+            padding: 5px;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+
+            &[active='yes'] {
+                border: 1px solid rgb(79, 110, 125);
+            }
+        }
+    }
+
+    &>div {
+        flex-grow: 1;
+        background-color: white;
+        outline: 1px solid gray;
+        padding: 5px;
+        overflow: auto;
+
+        &>h2 {
+            font-size: 14px;
+        }
+
+        &>div {
+            &>div {
+                &.msg {
+                    background-color: #0990bd;
+                    padding: 0 5px;
+                    line-height: 2em;
+                    margin: 10px;
+                    font-size: 12px;
+                    color: white;
+                    border-radius: 7px;
+                    word-break: break-all;
+                    max-width: 260px;
+                    display: inline-block;
+                    margin-top: 20px;
+                    text-align: left;
+                }
+
+                &.time {
+                    color: rgb(168, 162, 162);
+                    font-size: 10px;
+                }
+            }
+        }
+    }
 }

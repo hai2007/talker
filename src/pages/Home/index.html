@@ -1,0 +1,29 @@
+<div class='view'>
+    <header>
+        <h2 style="-webkit-app-region: drag">
+            来聊天吧~
+        </h2>
+        <span class="btn min" style="-webkit-app-region: no-drag" ui-on:click="minimize">
+            最小化
+        </span>
+        <span class="btn close" style="-webkit-app-region: no-drag" ui-on:click='quit'>
+            关闭
+        </span>
+    </header>
+    <div class="msg">
+        <div class="icon"></div>
+        <div class="info">
+            <input type="text" ui-model="name" disabled>
+            <div ui-bind="ip[0]"></div>
+        </div>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="搜索好友" ui-on:keydown="doKeydown">
+    </div>
+    <div class="list" id="address-list"></div>
+    <div class="tool">
+        <div class="sync" title="点击我同步好友列表" ui-on:click="doSync">
+            同步列表
+        </div>
+    </div>
+</div>

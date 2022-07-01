@@ -1,4 +1,7 @@
 const { app, BrowserWindow } = require('electron');
+const { initRootFolder } = require('./node.js/rootFolder');
+
+initRootFolder();
 
 function createWindow() {
     // 创建浏览器窗口
@@ -7,7 +10,7 @@ function createWindow() {
         height: 600,
         resizable: false,
         frame: false,
-        alwaysOnTop: true,
+        // alwaysOnTop: true,
         webPreferences: {
             /**
              * 因为 Electron 在运行环境中引入了 Node.js，所以在 DOM 中有一些额外的变量，比如 module、exports 和 require
@@ -25,13 +28,13 @@ function createWindow() {
 
     // 开发模式
     if ((process.env.NODE_ENV + "").trim() == 'development') {
-        win.loadURL('http://localhost:20000/');
+        win.loadURL('http://localhost:20000/Home.html');
         win.webContents.openDevTools();
     }
 
     // 生产模式
     else {
-        win.loadFile('./index.html');
+        win.loadFile('./home.html');
     }
 
     return win;
@@ -49,11 +52,10 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-    // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
-    // 否则绝大部分应用及其菜单栏会保持激活。
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+
+    // 关闭的时候，可以考虑广播一下下线了
+
+    app.quit();
 });
 
 app.on('activate', () => {
